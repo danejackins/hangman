@@ -9,21 +9,140 @@
 <body>
 
     <h1>HANGMAN</h1>
+    <h2>Open the consol log to see the magic!</h2>
+
+    <button onclick="sam()">Click me to play</button>
 
     <script>
     
-        var hangman = {
-        compChoices: ["Huey P. Newton", "Malcom X", "Martin Luther King, Jr.", "Marcus Garvey", "Muhammad Ali", "Rosa Parks"],
-        letterChoices: ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+/*
+        compChoices: ["dog", "cat", "goldfish", "parrot", "turtle", "pig"],
+        letterChoices: ["_", "_", "_", "_", "_", "_", "_", "_",],
         wins: 0,
         loses: 0,
         guesses: 7,
         
         randomword: function() {
-        var compGuess = compChoices[Math.floor(Math.random() * compChoices * length)];    
-        }
-        };
+  
+            /* NOTES /
+cpu 
+player
 
+array of words */
+
+    function sam() {
+
+       var cpuChoices = ["dog", "cat", "mouse", "parrot", "turtle", "pig"]
+       var lettersGuessed = []
+
+/*cpu grabs random word from array and sets to 'cpuChosenWord'*/
+
+        function cpuChosenWord() {
+            var wordIndex = Math.floor(Math.random() * cpuChoices.length)
+            return cpuChoices[wordIndex]
+        }
+
+        var cpuChosenWord = cpuChosenWord();
+
+        function hint () {
+            cpuChosenWord.length
+
+            var underscore = ""
+            for (var i = 0; i < cpuChosenWord.length; i++) {
+                underscore += " _";
+            }
+
+            console.log(underscore);
+            return
+        }
+
+        var hint = hint();
+/*
+
+player is prompted to guess a letter */
+
+        var guesses = 7;
+
+        do  {
+            var playerGuess = prompt("Guess a letter!");
+            guesses -= 1;
+            lettersGuessed.push(playerGuess)
+
+    /*        cpu returns if letter exists in word and where the letter exists in the word */
+
+
+            // function getMatch() {
+            //     var indices = [];
+            //     for (var i = 0; i < cpuChosenWord.length; i++) {
+            //         if (cpuChosenWord[i] === playerGuess) indices.push(i);
+            //     }
+            //     return indices;
+            //     console.log()
+            // }
+            // var match = getMatch();
+            // console.log(match);
+            var outputString = ""
+            for (i = 0; i < cpuChosenWord.length; i++) {
+                var res = cpuChosenWord.charAt(i);
+
+                var hasMatch = false;
+
+                for (j = 0; j < lettersGuessed.length; j++) {
+                    //Trying to match the lettersGuessed to positions in cpuChosenWord
+
+                    var match = lettersGuessed[j];
+    
+                    if (match === res) {
+    
+                        hasMatch = true;
+                    }
+                   
+                
+                }
+                
+                if (hasMatch) {
+                    outputString += res;
+                }    
+                else {
+                    outputString += " _"
+                }
+            }
+                console.log(outputString);
+        var win = outputString.indexOf("_");
+        if (win === -1) {
+            break
+        }
+        } while (guesses != 0)
+    }
+
+
+/*e.g. "dog"
+	user guesses "g"
+	cpu returns   g
+
+if (userGuess === cpuChosenWord) -> end game
+
+player gets 7 guesses, if playerGuessCnt <= 0, END GAME, Player lost
+
+
+
+
+1. print cpuChosenWord.length number of '_'s eg. word "dog" 3   _
+2. print playerGuessCount
+3. Prompt player for guess
+4. CPU find location of letter in string
+	var str = "scissors";
+	var indices = [];
+	for(var i=0; i<str.length;i++) {
+    	if (str[i] === "s") indices.push(i);
+	}
+
+	return the indeces
+
+5. print indeces and add '_'s where there are not that letter dog =   g
+6. print guess counter
+        };
+*/
     </script>
 </body>
 </html>
