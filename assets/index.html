@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>HANGMAN</h1>
+
+    <script>
+    
+        var hangman = {
+        compChoices: ["Huey P. Newton", "Malcom X", "Martin Luther King, Jr.", "Marcus Garvey", "Muhammad Ali", "Rosa Parks"],
+        letterChoices: ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        wins: 0,
+        loses: 0,
+        guesses: 7,
+        
+        randomword: function() {
+        var compGuess = compChoices[Math.floor(Math.random() * compChoices * length)];    
+        }
+        };
+
+    </script>
+</body>
+</html>
